@@ -1,0 +1,53 @@
+#+TITLE: RAG interface work plan
+#+AUTHOR: Anton Antonov
+#+EMAIL: antononcube@posteo.net
+#+TODO: TODO ONGOING MAYBE | DONE CANCELED 
+#+OPTIONS: toc:1 num:0
+
+
+* TODO Installations on DigitalOcean [100%] [6/6]
+** DONE Install latest Raku packages [100%] [5/5]
+*** DONE WWW::LLaMA
+*** DONE LLM::Functions
+*** DONE LLM::RetrievalAugmentedGeneration
+- Not trivial -- "many" dependencies.
+- Warning messages while testing, too.
+*** DONE LLM::Containerization
+- Use first:
+  : zef install Cro::HTTP::Test --/test
+  : zef install Log::Async --/test
+*** DONE WWW::YouTube
+- For future LLM projects.
+** DONE Install ~llamafiler~
+- Takes long time.
+** DONE Delete Wolfram Engine
+- Needed free space.
+** DONE Download LLaMA model(s)
+- Llama-3.2-1B-Instruct.Q6_K.llamafile.
+- It is approx. 1.3 GB.
+  - Wolfram Engine is approx. 2 GB.
+- Had to use ~scp~.
+** DONE Verify llamafile compiles/runs 
+** DONE Upload Vector Database (VDB)
+- [X] Verify XDG directory.
+- It should be approx. 70 MB.
+- In the XDG directory; maybe:
+  : .local/share/raku/LLM/SemanticSearchIndex
+* TODO Processes [%] [/]
+** TODO Start LLaMA embedding process with screen
+** TODO Start ~llm-web-service~ with screen
+* TODO Verify access
+- Using local Shiny app.
+* TODO Deploy to shinyapps.io "RAG Interface"
+- Make sure proper URLs are specified in the Setup panel.
+* TODO Verify access and computations
+- Using different LLMs for the answers.
+* TODO Notebook interface
+- Jupyter notebook instead of R/Shiny interface.
+  - Supports the corresponding workflows.
+* TODO Document and proclaim [0%] [0/4]
+- [ ] Comprehensive GitHub README
+- [ ] Video guide/demo
+- [ ] Blog post
+- [ ] File a Data Science Study Group South FL /abstract/
+   
