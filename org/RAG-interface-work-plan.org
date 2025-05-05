@@ -5,7 +5,7 @@
 #+OPTIONS: toc:1 num:0
 
 
-* TODO Installations on DigitalOcean [100%] [6/6]
+* DONE Installations on DigitalOcean [100%] [6/6]
 ** DONE Install latest Raku packages [100%] [5/5]
 *** DONE WWW::LLaMA
 *** DONE LLM::Functions
@@ -33,15 +33,18 @@
 - It should be approx. 70 MB.
 - In the XDG directory; maybe:
   : .local/share/raku/LLM/SemanticSearchIndex
-* TODO Processes [%] [/]
-** TODO Start LLaMA embedding process with screen
-** TODO Start ~llm-web-service~ with screen
-* TODO Verify access
+* DONE Processes [100%] [2/2]
+** DONE Start LLaMA embedding process with screen
+** DONE Start ~llm-web-service~ with screen
+- Had to enable a new port:
+  : sudo ufw allow 5080
+* DONE Verify access
 - Using local Shiny app.
-* TODO Deploy to shinyapps.io "RAG Interface"
-- Make sure proper URLs are specified in the Setup panel.
-* TODO Verify access and computations
+* DONE Deploy to shinyapps.io "RAG Interface"
+- [X] Make sure proper URLs are specified in the Setup panel.
+* DONE Verify access and computations
 - Using different LLMs for the answers.
+* DONE Update "My ShinyApps" Shortcuts app
 * TODO Notebook interface
 - Jupyter notebook instead of R/Shiny interface.
   - Supports the corresponding workflows.
