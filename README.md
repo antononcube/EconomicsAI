@@ -4,7 +4,7 @@
 
 This project -- named ***EconomicsAI*** -- is for Large Language Model (LLM) derived explanations of economics topics.
 
-EconomicsAI uses LLM Retrieval Augmented Generation (RAG). The RAG vector databases are created over economic articles, blog posts, or interview transcripts.\
+EconomicsAI uses LLM Retrieval Augmented Generation (RAG). The RAG vector databases are created over economic articles, blog posts, or interview transcripts.
 
 The initial vectors databases are created using the transcripts of interviews or discussions from the YouTube channels:
 
