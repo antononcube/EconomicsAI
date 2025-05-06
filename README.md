@@ -1,7 +1,35 @@
 # EconomicsAI
 
-Economics AI via LLM RAG over economic articles, blog posts, or interview transcripts.
+### Introduction
 
+This project -- named ***EconomicsAI*** -- is for Large Language Model (LLM) derived explanations of economics topics.
+
+EconomicsAI uses LLM Retrieval Augmented Generation (RAG). The RAG vector databases are created over economic articles, blog posts, or interview transcripts.\
+
+The initial vectors databases are created using the transcripts of interviews or discussions from the YouTube channels:
+
+- ["The Greater Eurasia Podcast"](https://www.youtube.com/@GDiesen1), [GDc1]
+
+- ["Dialogue works"](https://www.youtube.com/@dialogueworks01), [NAc1]
+
+- ["Robinson's Podcast"](https://www.youtube.com/@robinsonerhardt), [REc1]
+
+**Remark:** Currently, most of the text data (≈95%) is from interviews with 
+[Prof. Richard D. Wolff](https://en.wikipedia.org/wiki/Richard_D._Wolff) 
+and 
+[Prof. Michael Hudson](https://en.wikipedia.org/wiki/Michael_Hudson_(economist)).
+
+### Web interface
+
+EconomicsAI is available through the Web interface 
+[RAG-evaluations](https://antononcube.shinyapps.io/RAG-evaluations).    
+
+[![](./Diagrams/RAG-evaluations-EconomicsAI-tariffs.png)](https://antononcube.shinyapps.io/RAG-evaluations)
+
+### Workflows
+
+The following flowchart shows the vector databases creation and their utilization 
+for producing RAG-based LLM answers of user queries. 
 
 ```mermaid
 flowchart TD
