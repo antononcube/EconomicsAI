@@ -8,15 +8,15 @@ To run Economics AI:
 - The Raku package ["LLM::Containerization"](https://raku.land/zef:antononcube/LLM::Containerization) has to be installed.
   A LLaMA (llamafile) model has to be accessible
   - For example, "Llama-3.2-1B-Instruct.Q6_K.llamafile"
-    - Which run with the command `llamafiler --model Llama-3.2-1B-Instruct.Q6_K.llamafile`.
-- A search index over the texts has to be created in with vector embeddings of that model
+    - Which can be run with the command `llamafiler --model Llama-3.2-1B-Instruct.Q6_K.llamafile`.
+- A search index over the texts has to be created with vector embeddings of that model
   - Using ["LLM::RetrievalAugmentedGeneration"](https://raku.land/zef:antononcube/LLM::RetrievalAugmentedGeneration).
 - The search index has to be placed in "~/.local/share/raku/LLM/SemanticSearchIndex" 
 
 #### macOS specific
 
 - Download the GitHub repository ["raku-digest-sha1-native"](https://github.com/bduggan/raku-digest-sha1-native) and install it "locally."
-  - This needed for the installation of the package ["Cro::WebSocket"](https://raku.land/zef:cro/Cro::WebSocket).
+  - This is needed for the installation of the package ["Cro::WebSocket"](https://raku.land/zef:cro/Cro::WebSocket).
 
 ### Front-end
 
@@ -31,7 +31,10 @@ To run Economics AI:
 
 ### Run back-end on a remote server
 
+- Assuming using a server on a cloud computing platform
+  - Like [DigitalOcean](https://www.digitalocean.com) or similar
 - Make two screens: "llamafile" and "ragui"
+  - Using the UNIX/Linux command [`screen`](https://www.gnu.org/software/screen/manual/screen.html) 
 - In the screen "llamafile" start the LLaMA file model
   - For example, `llamafiler --model Llama-3.2-1B-Instruct.Q6_K.llamafile`.
 - In the screen "ragui" start the LLM web service with:
