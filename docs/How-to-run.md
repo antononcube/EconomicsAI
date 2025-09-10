@@ -44,3 +44,54 @@ To run Economics AI:
     - Place the correct Web service URL ("http://accendodata.net:5080")
     - Configure LLaMA embeddings model (default should be fine)
     - Configure "post-processing" LLM model
+
+------
+
+## Verify existing run setup
+
+- Assuming the EconomicsAI service is installed on cloud computing server
+  - To be concrete, on a Ubuntu [DigitalOcean](https://www.digitalocean.com) droplet 
+- See the available screens
+  - Using the command `screen -ls`
+  - Log to existing screen with `screen -r <name>`
+- Is there a screen named "llamafile"?
+  - If no make one and run the command:
+
+```
+llamafiler --model Llama-3.2-1B-Instruct.Q6_K.llamafile
+```
+
+- If there a screen named "ragui"?
+  - If not make one and run the command:
+  
+```
+llm-web-service --host=accendodata.net --port=5080
+```
+
+That might be slow -- wait until you see the message:
+
+> Started the Cro service.
+
+-----
+
+## Troubleshooting
+
+### Cannot start a new llamafile model
+
+If the command :
+
+```
+llamafiler --model Llama-3.2-1B-Instruct.Q6_K.llamafile
+```
+
+Gives the error:
+
+> 127.0.0.1:8080: Address already in use
+
+Then see the output of:
+
+```
+sudo lsof -i :8080
+```
+
+Kill the PID process with `kill -9 <PID>`.
