@@ -134,18 +134,28 @@ app_ui = ui.page_sidebar(
             ),
         ),
         # ── OUTPUT PANEL ────────────────────────────────────────────────────────
-        ui.div(
-            {"class": "panel-card output-panel"},
-            ui.h3("LLM Output"),
-            ui.output_ui("llm_md"),
+    ui.div(
+        {"class": "panel-card output-panel"},
+        ui.h3("LLM Output"),
+        ui.navset_tab(
+            ui.nav_panel(
+                "Response",
+                ui.output_ui("response_md"),
+            ),
+            ui.nav_panel(
+                "RAG context",
+                ui.output_ui("rag_md"),
+            ),
         ),
+    ),
     ),
     title="Ollama Semantic Search",
 )
 
 
 def server(input, output, session):
-    result_md = reactive.Value("")
+    response_md_state = reactive.Value("")
+    rag_md_state = reactive.Value("")
 
     @reactive.effect
     @reactive.event(input.run)
@@ -153,7 +163,8 @@ def server(input, output, session):
         prompt = input.query().strip()
         template = input.template().strip()
         if not prompt:
-            result_md.set("*Awaiting input.*")
+            response_md_state.set("*Awaiting input.*")
+            rag_md_state.set("*Awaiting input.*")
             return
 
         vdb = _load_faiss(input.db())
@@ -173,7 +184,8 @@ def server(input, output, session):
         #response = llm.invoke(formatted_prompt)
         response = StrOutputParser().invoke(llm.invoke(formatted_prompt))
         response_text = response.strip() if isinstance(response, str) else str(response)
-        result_md.set(
+        response_md_state.set(response_text or "_No response returned._")
+        rag_md_state.set(
             "\n".join(
                 [
                     f"**Database:** {VDB_CHOICES[input.db()]}",
@@ -182,11 +194,6 @@ def server(input, output, session):
                     "\n",
                     "---",
                     "\n",
-                    "### Response",
-                    response_text or "_No response returned._",
-                    "\n",
-                    '---',
-                    "### RAG context",
                     rag_context or "_No context returned._",
                     "",
                 ]
@@ -194,8 +201,15 @@ def server(input, output, session):
         )
 
     @render.ui
-    def llm_md():
-        current = result_md.get()
+    def response_md():
+        current = response_md_state.get()
+        if not current:
+            return ui.markdown("*Awaiting input.*")
+        return ui.markdown(current)
+
+    @render.ui
+    def rag_md():
+        current = rag_md_state.get()
         if not current:
             return ui.markdown("*Awaiting input.*")
         return ui.markdown(current)
